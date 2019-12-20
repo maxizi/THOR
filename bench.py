@@ -42,8 +42,11 @@ def load_cfg(args):
     cfg = json.load(open(json_path))
     return cfg
 
-def run_bench(delete_after=False):
-    args = parser.parse_args()
+def run_bench(delete_after=False, args_ext=None):
+    if args_ext == None:
+        args = parser.parse_args()
+    else:
+        args = args_ext
 
     cfg = load_cfg(args)
     cfg['THOR']['viz'] = args.viz
@@ -74,6 +77,7 @@ def run_bench(delete_after=False):
     # testing
     total_lost = 0
     speed_list = []
+
     for v_id, video in enumerate(dataset.keys(), start=1):
         tracker.temp_mem.do_full_init = True
         speed = test_bench(v_id, tracker, dataset[video], args)
