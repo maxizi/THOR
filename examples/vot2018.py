@@ -14,9 +14,9 @@ class DotDict(dict):
 def load_eval_config():
     args = DotDict()
     args.dataset = 'VOT2018'
-    args.tracker = 'SiamRPN'
-    args.vanilla = True
-    args.viz = False
+    args.tracker = 'SiamFC'
+    args.vanilla = False
+    args.viz = True
     args.lb_type = 'ensemble'
     args.spec_video = ''
     args.save_path = 'Tracker'
